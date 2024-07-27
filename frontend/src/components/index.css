@@ -1,0 +1,66 @@
+body{
+    background-color: rgb(26, 24, 24);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.register-outer{
+
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.register-email{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.register-password{
+    padding: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.register-button{
+    background-color: rgb(194, 194, 104);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 15px;
+    padding: 1em;
+    margin: 1em;
+    margin-right: 1em;
+    border: 1px solid black;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.register-button:hover{
+    background-color: rgb(203, 101, 203);
+    cursor: pointer;
+}
+
+.register-p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 1.2em;
+    margin-top: 1em;
+}
+
+.register-login{
+    color: rgb(194, 194, 104);
+    margin-top: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-login:hover{
+    color: rgb(203, 101, 203);
+}
+

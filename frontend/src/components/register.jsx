@@ -42,9 +42,10 @@ const Register = () => {
   };
 
   return (<>  
-    <div class=''>
-      <form onSubmit={handleSubmit}>
+    <div className='register-outer'>
+      <form className='register-inner' onSubmit={handleSubmit}>
         <input
+         className='register-email'
           type="email"
           name="email"
           value={formData.email}
@@ -53,6 +54,7 @@ const Register = () => {
           required
         />
         <input
+        className='register-password'
           type="password"
           name="password"
           value={formData.password}
@@ -60,11 +62,11 @@ const Register = () => {
           placeholder="Password"
           required
         />
-        <button type="submit">Register</button>
+        <button className='register-button' type="submit">Register</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message */}
-      <p>
-        Already have an account? <Link to="/login">Login here</Link>
+      <p className='register-p'>
+        Already have an account? <Link to="/login" className='register-login'>Login here</Link>
       </p>
     </div>
     </>
