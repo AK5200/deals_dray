@@ -64,3 +64,59 @@ body{
     color: rgb(203, 101, 203);
 }
 
+
+.home-inner{
+
+    display: flex;
+    background-color: rgb(48, 46, 46);
+    justify-content: space-around;
+    gap: 3em;
+    padding: 1em;
+    flex-wrap: wrap;
+}
+
+.home-home, .home-employee{
+    text-decoration: none;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:larger;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.home-home:hover, .home-employee:hover{
+    color:  rgb(203, 101, 203);
+}
+
+.home-logout{
+    text-decoration: none;
+    background-color:rgb(194, 194, 104) ;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    border-radius: 10px;
+    padding: 0.3em;
+    border: none;
+}
+
+.home-logout:hover{
+    background-color:rgb(203, 101, 203) ;
+    border: none;
+}
+
+.home-name{
+    color: white;
+    font-size: larger;
+}
+
+.home-p{
+    color: white;
+}
+
+.home-outer-p{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

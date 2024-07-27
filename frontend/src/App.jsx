@@ -5,13 +5,14 @@ import Home from './components/home';
 import Login from './components/login';
 import Register from './components/register';
 import PrivateRoute from './components/privateRoutes'; // Adjust path as necessary
-import Logout from './components/logout'; // Adjust path as necessary
+ // Adjust path as necessary
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
         {/* Add other routes here */}
