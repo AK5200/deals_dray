@@ -34,8 +34,10 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="login-outer">
+    <form className='login-inner' onSubmit={handleSubmit}>
       <input
+      className='login-email'
         type="email"
         name="email"
         value={formData.email}
@@ -44,6 +46,7 @@ const Login = () => {
         required
       />
       <input
+      className='login-password'
         type="password"
         name="password"
         value={formData.password}
@@ -51,8 +54,9 @@ const Login = () => {
         placeholder="Password"
         required
       />
-      <button type="submit">Login</button>
+      <button className='login-button' type="submit">Login</button>
     </form>
+    </div>
   );
 };
 
