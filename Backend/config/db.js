@@ -3,11 +3,7 @@ const mongoose = require('mongoose');
 // Connect to MongoDB
 const connectDb = async () => {
     try{
-        await mongoose.connect('mongodb://localhost:27017/deals_dray',{
-            newUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true
-        });
+        await mongoose.connect('mongodb://localhost:27017/deals_dray');
 
         console.log('Connected to MongoDB');
     } catch (error) {
