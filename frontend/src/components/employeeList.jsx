@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -30,6 +31,17 @@ const EmployeeList = () => {
     navigate('/login');
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredEmployees = employees.filter((employee) =>
+    employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    employee.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    employee.mobile.includes(searchTerm) ||
+    employee.designation.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
@@ -44,6 +56,12 @@ const EmployeeList = () => {
         </nav>
       </div>
       <h1>Employee List</h1>
+      <input
+        type="text"
+        placeholder="Search employees..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
       <table>
         <thead>
           <tr>
@@ -60,7 +78,7 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee, index) => (
+          {filteredEmployees.map((employee, index) => (
             <tr key={employee._id}>
               <td>{index + 1}</td>
               <td>
