@@ -5,6 +5,7 @@ const connectDb = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const authMiddleware = require('./middleware/authMiddelware');
 const cors = require('cors');
+const employeeRoutes = require('./routes/employees');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,11 @@ connectDb();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+//employee routes
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/api', employeeRoutes);
 
 // Routes
 app.use('/api/auth', authRoutes);

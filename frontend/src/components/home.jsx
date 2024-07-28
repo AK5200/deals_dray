@@ -1,6 +1,7 @@
 // src/components/home.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import AddEmployee from './addEmployee';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Home = () => {
       </nav>
       <div className="home-outer-p">
         <h1 className="home-p">Welcome to Admin Panel</h1>
-        {/* Add your content here */}
+        <AddEmployee/>
       </div>
     </div>
   );

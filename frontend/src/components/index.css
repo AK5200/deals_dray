@@ -112,11 +112,24 @@ body{
 
 .home-p{
     color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .home-outer-p{
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
+    gap: 2em;
+}
+
+.addEmployee-outer{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    width: 40vw;
+    padding: 1em;
+    margin: 2em;
+    background-color: rgb(48, 46, 46);
 }
