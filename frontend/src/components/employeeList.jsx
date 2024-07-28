@@ -1,4 +1,3 @@
-// src/components/EmployeeList.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortOption, setSortOption] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5); // Change this to desired page size
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -35,12 +37,45 @@ const EmployeeList = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handleSort = (event) => {
+    setSortOption(event.target.value);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const sortEmployees = (employees) => {
+    return employees.sort((a, b) => {
+      if (sortOption === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortOption === 'email') {
+        return a.email.localeCompare(b.email);
+      } else if (sortOption === 'id') {
+        return a._id.localeCompare(b._id);
+      } else if (sortOption === 'date') {
+        return new Date(a.createdAt) - new Date(b.createdAt);
+      } else {
+        return employees;
+      }
+    });
+  };
+
   const filteredEmployees = employees.filter((employee) =>
     employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.mobile.includes(searchTerm) ||
     employee.designation.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const sortedEmployees = sortEmployees(filteredEmployees);
+
+  // Calculate pagination values
+  const totalRecords = sortedEmployees.length;
+  const totalPages = Math.ceil(totalRecords / pageSize);
+  const startRecord = (currentPage - 1) * pageSize;
+  const endRecord = startRecord + pageSize;
+  const currentRecords = sortedEmployees.slice(startRecord, endRecord);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -62,6 +97,13 @@ const EmployeeList = () => {
         value={searchTerm}
         onChange={handleSearch}
       />
+      <select onChange={handleSort} value={sortOption}>
+        <option value="">Sort By</option>
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+        <option value="id">ID</option>
+        <option value="date">Date</option>
+      </select>
       <table>
         <thead>
           <tr>
@@ -78,9 +120,9 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredEmployees.map((employee, index) => (
+          {currentRecords.map((employee, index) => (
             <tr key={employee._id}>
-              <td>{index + 1}</td>
+              <td>{startRecord + index + 1}</td>
               <td>
                 {employee.image && (
                   <img
@@ -105,6 +147,17 @@ const EmployeeList = () => {
           ))}
         </tbody>
       </table>
+      <div>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            disabled={currentPage === index + 1}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
