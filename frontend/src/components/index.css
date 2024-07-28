@@ -128,8 +128,229 @@ body{
     display: flex;
     flex-direction: column;
     gap: 2em;
+    color: white;
     width: 40vw;
     padding: 1em;
     margin: 2em;
     background-color: rgb(48, 46, 46);
+    align-items: center;
 }
+
+.addEmployee-inner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+
+    width: 70%;
+}
+
+
+.addEmployeeText, .addEmployeeHeading{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+}
+
+
+
+.container {
+    padding: 20px;
+  }
+  
+  .navbar {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    margin: 1em;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .navbar button:hover {
+    background-color: #e60000;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 20%;
+    margin-right: 10px;
+  }
+  
+  .sortOptions {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    background-color: rgb(236, 236, 83);
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .actions button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .actions .edit {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .actions .edit:hover {
+    background-color: #0056b3;
+  }
+  
+  .actions .delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .actions .delete:hover {
+    background-color: #c82333;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination button {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .entries-per-page {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .entries-per-page select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 10px;
+  }
+  
+
+
+  /* index.css */
+.container1 {
+    margin: 0 auto;
+    width: 30%;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="file"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

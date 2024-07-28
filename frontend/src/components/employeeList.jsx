@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import './index.css';  // Import the CSS file
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -96,34 +97,39 @@ const EmployeeList = () => {
   const endRecord = startRecord + pageSize;
   const currentRecords = sortedEmployees.slice(startRecord, endRecord);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div className="text-center p-4">Loading...</div>;
+  if (error) return <div className="text-center p-4 text-red-600">{error}</div>;
 
   return (
-    <div>
-      <div className='home-outer'>
-        <nav className="home-inner">
-          <Link to="/home" className="home-home">Home</Link>
-          <Link to="/employee-list" className="home-employee">Employee List</Link>
-          <span className="home-name">admin@example.com</span>
-          <button onClick={handleLogout} className="home-logout">Logout</button>
+    <div className="container">
+      <div className="navbar">
+        <nav>
+          <Link to="/home">Home</Link>
+          <Link to="/employee-list">Employee List</Link>
         </nav>
+        <div>
+          <span>Admin</span>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       </div>
-      <h1>Employee List</h1>
-      <input
-        type="text"
-        placeholder="Search employees..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-      <select onChange={handleSort} value={sortOption}>
-        <option value="">Sort By</option>
-        <option value="name">Name</option>
-        <option value="email">Email</option>
-        <option value="id">ID</option>
-        <option value="date">Date</option>
-      </select>
-      <table>
+      <h1 className="heading">Employee List</h1>
+      <div className="search-sort-container">
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search employees..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <select className="sortOptions" onChange={handleSort} value={sortOption}>
+          <option value="">Sort By</option>
+          <option value="name">Name</option>
+          <option value="email">Email</option>
+          <option value="id">ID</option>
+          <option value="date">Date</option>
+        </select>
+      </div>
+      <table className="table">
         <thead>
           <tr>
             <th>Unique Id</th>
@@ -147,7 +153,7 @@ const EmployeeList = () => {
                   <img
                     src={`http://localhost:3000/${employee.image}`}
                     alt={employee.name}
-                    style={{ width: '50px', height: '50px' }}
+                    style={{ width: '50px', height: '50px', borderRadius: '50%' }}
                   />
                 )}
               </td>
@@ -158,40 +164,49 @@ const EmployeeList = () => {
               <td>{employee.gender}</td>
               <td>{employee.courses.join(', ')}</td>
               <td>{new Date(employee.createdAt).toLocaleDateString()}</td>
-              <td>
-                <button onClick={() => handleEdit(employee._id)}>Edit</button>
-                <button onClick={() => handleDelete(employee._id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div>
-        <label>Entries per page:</label>
-        <select value={pageSize} onChange={handlePageSizeChange}>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={15}>15</option>
-          <option value={20}>20</option>
-        </select>
-      </div>
-      <div>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            disabled={currentPage === index + 1}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-};
+              <td className="actions">
+                   <button
+                     className="edit"
+                     onClick={() => handleEdit(employee._id)}
+                   >
+                     Edit
+                   </button>
+                   <button
+                     className="delete"
+                     onClick={() => handleDelete(employee._id)}
+                   >
+                     Delete
+                   </button>
+                 </td>
+               </tr>
+             ))}
+           </tbody>
+         </table>
+         <div className="pagination">
+           <div className="entries-per-page">
+             <label>Entries per page:</label>
+             <select value={pageSize} onChange={handlePageSizeChange}>
+               <option value={5}>5</option>
+               <option value={10}>10</option>
+               <option value={15}>15</option>
+               <option value={20}>20</option>
+             </select>
+           </div>
+           <div>
+             {Array.from({ length: totalPages }, (_, index) => (
+               <button
+                 key={index}
+                 onClick={() => handlePageChange(index + 1)}
+                 className={currentPage === index + 1 ? 'active' : ''}
+               >
+                 {index + 1}
+               </button>
+             ))}
+           </div>
+         </div>
+       </div>
+     );
+   };
 
+   export default EmployeeList;
 
-
-export default EmployeeList;
-
-        

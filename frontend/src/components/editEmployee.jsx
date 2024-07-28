@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import './index.css';  // Import the CSS file
 
 const EditEmployee = () => {
   const { id } = useParams();
@@ -62,10 +63,10 @@ const EditEmployee = () => {
   };
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
-    <div>
+    <div className="container1">
       <h1>Edit Employee</h1>
       <form onSubmit={handleSubmit}>
         <label>

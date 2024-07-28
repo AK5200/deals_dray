@@ -53,11 +53,11 @@ const AddEmployee = () => {
   };
 
   return (
-    <div>
-      <h2>Add Employee</h2>
-      <form className='addEmployee-outer' onSubmit={handleSubmit}>
+    <div className='addEmployee-outer'>
+      <h2 className='addEmployeeHeading'>Add Employee</h2>
+      <form className='addEmployee-inner' onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label className='addEmployeeText'>Name: </label>
           <input
             type="text"
             value={name}
@@ -66,7 +66,7 @@ const AddEmployee = () => {
           />
         </div>
         <div>
-          <label>Email:</label>
+          <label className='addEmployeeText'>Email: </label>
           <input
             type="email"
             value={email}
@@ -75,7 +75,7 @@ const AddEmployee = () => {
           />
         </div>
         <div>
-          <label>Mobile:</label>
+          <label className='addEmployeeText'>Mobile: </label>
           <input
             type="text"
             value={mobile}
@@ -84,7 +84,7 @@ const AddEmployee = () => {
           />
         </div>
         <div>
-          <label>Designation:</label>
+          <label className='addEmployeeText'>Designation: </label>
           <select
             value={designation}
             onChange={(e) => setDesignation(e.target.value)}
@@ -98,7 +98,7 @@ const AddEmployee = () => {
           </select>
         </div>
         <div>
-          <label>Gender:</label>
+          <label className='addEmployeeText'>Gender:</label>
           <label>
             <input
               type="radio"
@@ -128,7 +128,7 @@ const AddEmployee = () => {
           </label>
         </div>
         <div>
-          <label>Courses:</label>
+          <label className='addEmployeeText'>Courses:</label>
           <label>
             <input
               type="checkbox"
@@ -167,7 +167,7 @@ const AddEmployee = () => {
           </label>
         </div>
         <div>
-          <label>Image:</label>
+          <label className='addEmployeeText'>Image:</label>
           <input
             type="file"
             onChange={(e) => setImage(e.target.files[0])}

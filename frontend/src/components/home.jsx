@@ -19,7 +19,7 @@ const Home = () => {
 
             <Link to="/employee-list" className="home-employee">Employee List</Link>
           
-            <span className="home-name">admin@example.com</span>
+            <span className="home-name">Admin</span>
           
             <button onClick={handleLogout} className="home-logout">Logout</button>
           
