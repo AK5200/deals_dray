@@ -1,6 +1,16 @@
 const { validationResult } = require('express-validator');
 const Employee = require('../models/Employee'); // Adjust the path as necessary
 
+// get all employees
+const getAllEmployees = async (req, res) => {
+  try {
+    const employees = await Employee.find();
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching employee data' });
+  }
+};
+
 // Controller function for adding an employee
 const addEmployee = async (req, res) => {
   const errors = validationResult(req);
@@ -22,7 +32,7 @@ const addEmployee = async (req, res) => {
       designation,
       gender,
       courses: coursesArray,
-      image: req.file ? req.file.path : null,
+      image: req.file ? `uploads/${req.file.filename}` : null,
     });
 
     await newEmployee.save();
@@ -35,4 +45,5 @@ const addEmployee = async (req, res) => {
 
 module.exports = {
   addEmployee,
+  getAllEmployees,
 };

@@ -1,7 +1,7 @@
 body{
     background-color: rgb(26, 24, 24);
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .register-outer , .login-outer{
 

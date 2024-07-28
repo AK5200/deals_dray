@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { body } = require('express-validator');
-const employeeController = require('../controllers/employeeController'); // Adjust the path as necessary
+const employeeController = require('../controllers/employeeController'); // Import the entire module
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -27,7 +27,9 @@ router.post(
     body('gender').not().isEmpty().withMessage('Gender is required'),
     body('courses').not().isEmpty().withMessage('At least one course is required'),
   ],
-  employeeController.addEmployee
+  employeeController.addEmployee // Use the function from the imported module
 );
+
+router.get('/employees', employeeController.getAllEmployees); // Use the function from the imported module
 
 module.exports = router;
