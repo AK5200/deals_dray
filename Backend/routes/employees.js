@@ -31,5 +31,7 @@ router.post(
 );
 
 router.get('/employees', employeeController.getAllEmployees); // Use the function from the imported module
+router.put('/employees/:id', upload.single('image'), employeeController.updateEmployee); // Add the edit route
+router.delete('/employees/:id', employeeController.deleteEmployee); // Add the delete route
 
 module.exports = router;

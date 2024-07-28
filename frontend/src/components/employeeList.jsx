@@ -7,7 +7,7 @@ const EmployeeList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5); // Change this to desired page size
+  const [pageSize, setPageSize] = useState(10);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -43,6 +43,25 @@ const EmployeeList = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handlePageSizeChange = (event) => {
+    setPageSize(Number(event.target.value));
+    setCurrentPage(1);
+  };
+
+  const handleEdit = (id) => {
+    navigate(`/edit-employee/${id}`);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/employees/${id}`);
+      setEmployees(employees.filter(employee => employee._id !== id));
+    } catch (error) {
+      console.error('Error deleting employee:', error);
+      setError('Error deleting employee');
+    }
   };
 
   const sortEmployees = (employees) => {
@@ -140,17 +159,26 @@ const EmployeeList = () => {
               <td>{employee.courses.join(', ')}</td>
               <td>{new Date(employee.createdAt).toLocaleDateString()}</td>
               <td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => handleEdit(employee._id)}>Edit</button>
+                <button onClick={() => handleDelete(employee._id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <div>
+        <label>Entries per page:</label>
+        <select value={pageSize} onChange={handlePageSizeChange}>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={15}>15</option>
+          <option value={20}>20</option>
+        </select>
+      </div>
+      <div>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
-            key={index + 1}
+            key={index}
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
           >
@@ -162,4 +190,8 @@ const EmployeeList = () => {
   );
 };
 
+
+
 export default EmployeeList;
+
+        
